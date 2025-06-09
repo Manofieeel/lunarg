@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LunarUI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #1a1a1a, #2b2b2b);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 1.2rem;
+    }
+
+    header span {
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .buttons a {
+      padding: 0.5rem 1rem;
+      background: white;
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .buttons a:hover {
+      background: #f0f0f0;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .section p {
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 1rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-button {
+      display: block;
+      margin: 2rem auto 1rem;
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .faq-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-box {
+      display: none;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    .faq-box h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-box p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: moveStar linear infinite;
+    }
+
+    @keyframes moveStar {
+      0% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    .cursor-light {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 80%);
+      pointer-events: none;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      transition: transform 0.05s linear;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 1rem;
+      color: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+  <div class="cursor-light"></div>
+
+  <header>
+    <h1>LunarUI <span>por TatuMush</span></h1>
+  </header>
+
+  <section class="hero">
+    <h2>O LunarUI é um suporte visual para o seu desenvolvimento no Roblox</h2>
+    <p>Construa interfaces deslumbrantes e modernas no Roblox Studio.</p>
+    <div class="buttons">
+      <a href="https://discord.gg/DKhSK5mYtd" target="_blank">Entrar no Discord</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Sobre Mim</h3>
+    <p>Oi, meu nome é Arthur (também conhecido como TatuMush). Sou desenvolvedor de jogos no Roblox Studio, atuando com UI (interfaces de usuário), builds e programação em Luau. Trabalho com projetos pagos ou gratuitos, dependendo da complexidade e das necessidades do cliente. Distribuo sistemas profissionais e eficientes com foco na qualidade e performance!</p>
+
+    <div class="cards">
+      <div class="card">
+        <i>🔥</i>
+        <strong>Designer</strong>
+        <p>Criação focada com qualidade visual e lógica voltada ao usuário final.</p>
+      </div>
+      <div class="card">
+        <i>💧</i>
+        <strong>Build</strong>
+        <p>Construções e cenários visuais adaptados aos códigos do Roblox Studio.</p>
+      </div>
+      <div class="card">
+        <i>⚙️</i>
+        <strong>Programação Luau</strong>
+        <p>Código limpo, modular e profissional em linguagem própria do Roblox.</p>
+      </div>
+    </div>
+
+    <button class="faq-button" onclick="toggleFAQ()">Dúvidas Frequentes</button>
+
+    <div class="faq-box" id="faqBox">
+      <h4>Os sistemas são pagos?</h4>
+      <p>Alguns sim, outros não. Depende da complexidade do projeto e do tempo que leva para ser desenvolvido.</p>
+      <h4>Você faz de graça?</h4>
+      <p>Sim, se o sistema for simples e rápido de entregar. Projetos maiores geralmente são pagos.</p>
+      <h4>Demora pra entregar?</h4>
+      <p>Projetos simples podem ser entregues em até 1 dia. Projetos complexos podem levar mais tempo, dependendo do que for necessário.</p>
+      <h4>Posso pedir qualquer sistema?</h4>
+      <p>Sim! Desde que seja algo possível de fazer no Roblox Studio, com UI ou programação em Luau, pode mandar a ideia.</p>
+    </div>
+  </section>
+
+  <footer>
+    Feito por <strong>TatuMush</strong> • <a href="https://instagram.com/dafieeel" style="color:#aaa;">@dafieeel</a>
+  </footer>
+
+  <script>
+    // Estrelas (bolinhas) caindo
+    const starContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * -100}%`;
+      star.style.animationDuration = `${3 + Math.random() * 5}s`;
+      starContainer.appendChild(star);
+    }
+
+    // FAQ toggle
+    function toggleFAQ() {
+      const box = document.getElementById('faqBox');
+      box.style.display = box.style.display === 'none' || box.style.display === '' ? 'block' : 'none';
+    }
+
+    // Cursor com efeito de luz
+    const cursorLight = document.querySelector('.cursor-light');
+    document.addEventListener('mousemove', (e) => {
+      cursorLight.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+  </script>
+
+</body>
+</html>

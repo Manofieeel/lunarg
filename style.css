@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+  font-size: 1rem;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.sub {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+main {
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: white;
+  color: black;
+  border: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid white;
+  color: #60a5fa;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: scale(1.05);
+}
+
+.about {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  text-align: left;
+}
+
+.about h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.about p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.about img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.card p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.cursor-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: transform 0.05s linear;
+}
